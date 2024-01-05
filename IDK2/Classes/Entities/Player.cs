@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Graphics.PackedVector;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace IDK2.Classes.Entities
 {
     internal class Player : Sprite
     {
-        private float speed = 500f;
+        private int speed = 500;
         public Player(Texture2D texture, Vector2 position) : base(texture, position) {
             
         }
@@ -19,25 +20,33 @@ namespace IDK2.Classes.Entities
         public override void Update(GameTime gametime)
         {
             KeyboardState kstate = Keyboard.GetState();
+            Vector2 movement = Vector2.Zero;
 
-            if(kstate.IsKeyDown(Keys.D) && _position.X < 1210)
+            if(kstate.IsKeyDown(Keys.D) && _position.X < 1242)
             {
-                _position.X += (float)speed * (float)gametime.ElapsedGameTime.TotalSeconds;
+                movement.X += 1;
             }
 
-            if (kstate.IsKeyDown(Keys.A) && _position.X > 0)
+            if (kstate.IsKeyDown(Keys.A) && _position.X > 32)
             {
-                _position.X += -(float)speed * (float)gametime.ElapsedGameTime.TotalSeconds;
+                movement.X -= 1;
             }
 
-            if (kstate.IsKeyDown(Keys.W) && _position.Y > 0)
+            if (kstate.IsKeyDown(Keys.W) && _position.Y > 32)
             {
-                _position.Y += -(float)speed * (float)gametime.ElapsedGameTime.TotalSeconds;
+                movement.Y -= 1;
             }
 
-            if (kstate.IsKeyDown(Keys.S) && _position.Y < 650)
+            if (kstate.IsKeyDown(Keys.S) && _position.Y < 680)
             {
-                _position.Y += (float)speed * (float)gametime.ElapsedGameTime.TotalSeconds;
+                movement.Y += 1;
+            }
+
+            if(movement != Vector2.Zero)
+            {
+                movement.Normalize();
+
+                _position += movement * speed * (float)gametime.ElapsedGameTime.TotalSeconds;
             }
         }
     }

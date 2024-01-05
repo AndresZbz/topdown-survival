@@ -42,7 +42,7 @@ namespace IDK2.Classes.UI
         {
             _texture = texture;
             _font = font;
-            PenColour = Color.Black;
+            PenColour = Color.White;
         }
 
         public override void Draw(GameTime gametime, SpriteBatch spritebatch)
