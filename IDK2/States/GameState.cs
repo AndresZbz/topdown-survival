@@ -4,11 +4,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace IDK2.States
 {
@@ -24,10 +20,13 @@ namespace IDK2.States
             
             font = content.Load<SpriteFont>("fonts/File");
             var playerTexture = content.Load<Texture2D>("Sprites/player");
+            var cursorTexture = content.Load<Texture2D>("Sprites/cursor");
 
-            cursor = new Cursor(playerTexture, Vector2.Zero);
+            cursor = new Cursor(cursorTexture, Vector2.Zero);
             player = new Player(playerTexture, new Vector2(640, 360));
-            
+
+            game.IsMouseVisible = false;
+
         }
 
         public override void Draw(GameTime gametime, SpriteBatch spriteBatch)

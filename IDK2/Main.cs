@@ -43,7 +43,7 @@ namespace IDK2
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            currentState = new GameState(this, _graphics.GraphicsDevice, Content);
+            currentState = new MenuState(this, _graphics.GraphicsDevice, Content);
             // TODO: use this.Content to load your game content here
         }
 

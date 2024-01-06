@@ -14,10 +14,13 @@ namespace IDK2.Classes
     internal class Cursor : Sprite
     {
         private Texture2D _texture;
+        Vector2 origin { get; set; }
 
         public Cursor(Texture2D texture, Vector2 position) : base(texture, position)
         {
             _texture = texture;
+
+            origin = new Vector2(_texture.Width / 2, _texture.Height / 2);
         }
 
         public override void Update(GameTime gametime)
@@ -29,7 +32,7 @@ namespace IDK2.Classes
 
         public override void Draw(SpriteBatch spritebatch)
         {
-            spritebatch.Draw(_texture, _position, Color.White);
+            spritebatch.Draw(_texture, _position, null, Color.White, 0f, origin, 2f, SpriteEffects.None, 1f);
         }
 
     }

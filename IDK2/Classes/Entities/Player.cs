@@ -13,7 +13,13 @@ namespace IDK2.Classes.Entities
     internal class Player : Sprite
     {
         private int speed = 500;
+        Vector2 origin { get; set; }
+        int rotation;
         public Player(Texture2D texture, Vector2 position) : base(texture, position) {
+
+
+
+            origin = new Vector2(_texture.Width / 2, _texture.Height / 2);
             
         }
 
@@ -21,8 +27,12 @@ namespace IDK2.Classes.Entities
         {
             KeyboardState kstate = Keyboard.GetState();
             Vector2 movement = Vector2.Zero;
+            MouseState mouseState = Mouse.GetState();
 
-            if(kstate.IsKeyDown(Keys.D) && _position.X < 1242)
+
+            rotation = mouseState.X;
+
+            if (kstate.IsKeyDown(Keys.D) && _position.X < 1242)
             {
                 movement.X += 1;
             }
@@ -48,6 +58,11 @@ namespace IDK2.Classes.Entities
 
                 _position += movement * speed * (float)gametime.ElapsedGameTime.TotalSeconds;
             }
+        }
+
+        public override void Draw(SpriteBatch spritebatch)
+        {
+            spritebatch.Draw(_texture, _position, null, Color.White, 0f, origin, 1f, SpriteEffects.None, 1f);
         }
     }
 }
