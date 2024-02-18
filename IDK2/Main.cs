@@ -55,7 +55,7 @@ namespace IDK2
         {
             KeyboardState kstate = Keyboard.GetState();
 
-            if (kstate.IsKeyDown(Keys.F2))
+            if (kstate.IsKeyDown(Keys.F4))
             {
                 _graphics.ToggleFullScreen();
             }

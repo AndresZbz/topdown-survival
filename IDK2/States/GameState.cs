@@ -12,6 +12,7 @@ namespace IDK2.States
     {
         SpriteFont font;
         Player player;
+        Bullet bullet;
 
         Cursor cursor;
 
@@ -21,9 +22,11 @@ namespace IDK2.States
             font = content.Load<SpriteFont>("fonts/File");
             var playerTexture = content.Load<Texture2D>("Sprites/player");
             var cursorTexture = content.Load<Texture2D>("Sprites/cursor");
+            var bulletTexture = content.Load<Texture2D>("Sprites/ball");
 
             cursor = new Cursor(cursorTexture, Vector2.Zero);
-            player = new Player(playerTexture, new Vector2(640, 360));
+            player = new Player(playerTexture, new Vector2(640, 360), bulletTexture);
+
 
             game.IsMouseVisible = false;
 
